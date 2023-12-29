@@ -1,0 +1,69 @@
+﻿@model EEducation.WebUI.Models.ShoppingCart
+
+@if (Model.TotalAmount > 0)
+{
+    <div class="shopcart">
+        <a asp-action="Index" asp-controller="Cart" class="icon_wrp text-center d-none d-lg-block">
+            <span class="icon">
+                <i class="icon-cart"></i>
+            </span>
+            <span class="icon_text">Sepetim</span>
+
+            <span class="pops">1</span>
+
+        </a>
+        <div class="shopcart_dropdown">
+            <div class="cart_droptitle">
+                <h4 class="text_lg">Sepet İçeriğim</h4>
+            </div>
+            <div class="cartsdrop_wrap">
+                <!-- mobile cart single product  -->
+                @foreach (var item in Model.CartItems)
+                {
+                    <a href="product-view.html" class="single_cartdrop mb-3">
+                        <span class="remove_cart"><i class="las la-times"></i></span>
+                        <div class="cartdrop_img">
+                            <img loading="lazy" src="~/themes/e-ticaret/assets/images/75x60.png" alt="product">
+                        </div>
+                        <div class="cartdrop_cont">
+                            <h5 class="text_lg mb-0 default_link">
+                                @item.ProductName
+                            </h5>
+                            <p class="mb-0 text_xs text_p">x @item.Quantity <span class="ms-2">@item.Price ₺</span></p>
+                        </div>
+                    </a>
+                }
+
+            </div>
+            <div class="total_cartdrop">
+                <h4 class="text_lg text-uppercase mb-0">Toplam Tutar:</h4>
+                <h4 class="text_lg mb-0 ms-2">@Model.TotalAmount ₺</h4>
+            </div>
+            <!-- mobile cart button  -->
+            <div class="cartdrop_footer d-flex mt-3">
+                <a asp-controller="Cart" asp-action="Index" class="default_btn w-50 text_xs px-1">Sepete Git</a>
+                <a href="checkout.html" class="default_btn second ms-3 w-50 text_xs px-1">Ödeme Yap</a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="shopcart">
+        <a asp-action="Index" asp-controller="Cart" class="icon_wrp text-center d-none d-lg-block">
+            <span class="icon">
+                <i class="icon-cart"></i>
+            </span>
+            <span class="icon_text">Sepetim</span>
+
+            <span class="pops">0</span>
+
+        </a>
+        <div class="shopcart_dropdown">
+            <div class="cart_droptitle">
+                <h4 class="text_lg" style="text-align:center; color:#fd3d57;">SEPETİNİZ BOŞ!</h4>
+            </div>
+
+        </div>
+    </div>
+}

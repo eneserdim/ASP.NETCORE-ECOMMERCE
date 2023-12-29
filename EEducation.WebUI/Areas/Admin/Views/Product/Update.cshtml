@@ -1,0 +1,74 @@
+﻿@model EEducation.Model.Entities.Product
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+
+<form asp-area="Admin" asp-controller="Product" asp-action="Update" method="post" enctype="multipart/form-data">
+    <input type="hidden" class="form-control" name="ID" value="@Model.ID">
+    <input type="hidden" class="form-control" name="IsStock" value="true">
+    <div class="form-group mb-3">
+        <input type="text" class="form-control" name="ProductName" placeholder="Ürün Adı" value="@Model.ProductName">
+    </div>
+    <div class="form-group mb-3">
+        <input type="number" class="form-control" name="ProductPrice" placeholder="Ürün Fiyatı (₺)" value="@Model.ProductPrice">
+    </div>
+    <div class="form-group mb-3">
+        <input type="text" class="form-control" name="ProductStock" placeholder="Stok Sayısı" value="@Model.ProductStock">
+    </div>
+    <div class="form-group mb-3">
+        <select class="form-control nested" name="CategoryId">
+            <option selected="@Model.Category.CategoryName">@Model.CategoryId</option>
+            @foreach (var item in ViewBag.KategoriListesi)
+            {
+                <option value="@item.ID">@item.CategoryName</option>
+            }
+
+        </select>
+    </div>
+    <div class="form-group mb-3">
+        <textarea placeholder="Ürün Kısa Açıklaması" name="ProductShortDescription" value="@Model.ProductShortDescription" style="width:-webkit-fill-available;">@Model.ProductShortDescription</textarea>
+    </div>
+
+
+
+    <div id="autosaving" class="row layout-spacing">
+        <div class="col-lg-12">
+            <div class="statbox widget box box-shadow">
+                <div class="widget-content widget-content-area">
+
+                    <textarea id="demo2" name="ProductDescription" value="@Model.ProductDescription">@Model.ProductDescription</textarea>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="custom-file-container" data-upload-id="myFirstImage">
+        <label>Upload (Single File) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+        <label class="custom-file-container__custom-file">
+            <input type="file" name="file" class="custom-file-container__custom-file__custom-file-input" accept="image/*">
+            <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+            <span class="custom-file-container__custom-file__custom-file-control"></span>
+        </label>
+        <div class="custom-file-container__image-preview"></div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Kaydet</button>
+</form>
+
+
+<script>
+    new SimpleMDE({
+        element: document.getElementById("demo2"),
+        spellChecker: false,
+        autosave: {
+            enabled: true,
+            unique_id: "demo2",
+        },
+    });
+</script>

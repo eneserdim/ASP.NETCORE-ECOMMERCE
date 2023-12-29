@@ -1,0 +1,215 @@
+﻿@model IEnumerable<EEducation.Model.Entities.Slider>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<!-- Slider Başlangıç -->
+<div class="banner_slider">
+    @foreach (var item in Model)
+    {
+        <div class="hero_area" style="background-image: url('/images/@item.SliderImage')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="hero_content">
+                            <h1>@item.SliderTitle</h1>
+                            <p>@item.SliderDescription </p>
+                            <div class="hero_btn">
+                                <a class="default_btn small rounded" href="@item.ButtonUrl">@item.ButtonName</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+<!-- Slider Bitiş -->
+<!-- Bilgi Kartları Başlangıç -->
+<section class="features_area  section_padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-10">
+                <div class="row justify-content-center gx-2 gx-md-4">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <div class="single_feature d-flex flex-column flex-sm-row align-items-center justify-content-center">
+                            <div class="feature_icon">
+                                <img src="~/themes/e-ticaret/assets/images/svg/fast-delivery (1).png" />
+
+                            </div>
+                            <div class="feature_content">
+                                <h4>Ücretsiz Teslimat</h4>
+                                <p>10.000₺ Üzeri Alışverilerde</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <div class="single_feature d-flex flex-column flex-sm-row align-items-center justify-content-center">
+                            <div class="feature_icon">
+                                <img loading="lazy" src="~/themes/e-ticaret/assets/images/svg/credit-card.png" alt="icon">
+                            </div>
+                            <div class="feature_content">
+                                <h4>Güvenli Ödeme Altyapısı</h4>
+                                <p>256 bit SSL Sertifa Güvencesi!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="single_feature d-flex flex-column flex-sm-row align-items-center justify-content-center">
+                            <div class="feature_icon">
+                                <img loading="lazy" src="~/themes/e-ticaret/assets/images/svg/customer-service (1).png" alt="icon">
+                            </div>
+                            <div class="feature_content">
+                                <h4>7/24 Müşteri Destek Hattı</h4>
+                                <p>Müşterilerimizin Hizmetindeyiz!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bilgi Kartları Bitiş -->
+<!-- İNDİRİM KARTLARI BAŞLANGIÇ -->
+<div class="offer_wrp section_padding_b">
+    <div class="container">
+        <div class="row">
+            <!-- single offer  -->
+            <div class="col-sm-6">
+                <div class="single_offercard">
+                    <div class="offertext">
+                        <h3 class="offer_pers">30% offer</h3>
+                        <h4>DİNAMİK HALE GELECEK</h4>
+                        <p>Attractive Natural Furniture</p>
+                        <a href="shop-grid.html" class="default_btn rounded xs_btn">Shop Now</a>
+                    </div>
+                    <div class="offerimg">
+                        <img loading="lazy" src="~/themes/e-ticaret/assets/images/200x180.png" alt="product">
+                    </div>
+                </div>
+            </div>
+            <!-- single offer  -->
+            <div class="col-sm-6 mt-3 mt-sm-0">
+                <div class="single_offercard bg_2">
+                    <div class="offertext">
+                        <h3 class="offer_pers">50% offer</h3>
+                        <h4>DİNAMİK HALE GELECEK</h4>
+                        <p>Attractive Natural Furniture</p>
+                        <a href="shop-grid.html" class="default_btn rounded xs_btn">Shop Now</a>
+                    </div>
+                    <div class="offerimg">
+                        <img loading="lazy" src="~/themes/e-ticaret/assets/images/200x180.png" alt="product">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- İNDİRİM KARTLARI BİTİŞ -->
+<!-- KATEGORİLER BAŞLANGIÇ -->
+<div class="shop_bycat section_padding_b">
+    <div class="container">
+        <h2 class="section_title_3">Kategorilerimiz</h2>
+        <div class="row gx-2 gy-2">
+            @foreach (var item in ViewBag.CategoryList)
+            {
+                <div class="col-lg-4 col-6">
+                    <a href="/Category/Products/@item.ID" class="single_shopbycat bg_1"
+                       style="background-image: url('/images/@item.CategoryImage');">
+                        <div class="shopcat_cont">
+                            <h4>@item.CategoryName</h4>
+                            <div class="icon">
+                                <i class="las la-long-arrow-alt-right"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<!-- KATEGORİLER BİTİŞ -->
+
+
+<!-- ÖNE ÇIKAN ÜRÜNLER BAŞLANGIÇ -->
+@await Component.InvokeAsync("HomeProductList")
+
+<!-- ÖNE ÇIKAN ÜRÜNLER BİTİŞ -->
+
+<!-- BANNER BAŞLANGIÇ -->
+<h4 style="text-align:center">AŞAĞIDAKİ FOTOĞRAF DİNAMİK GELECEK</h4>
+<div class="offer_banner_area section_padding_b">
+    <div class="container">
+        <a href="#">
+            <picture>
+                <source media="(min-width: 768px)" srcset="~/images/banner1_Slider-234656807616778.jpg">
+                <img loading="lazy" src="~/images/banner1_Slider-234656807616778.jpg" alt="ad">
+            </picture>
+        </a>
+    </div>
+</div>
+
+<!-- BANNER BİTİŞ -->
+
+
+<!--  SON EKLENEN ÜRÜNLER BAŞLANGIÇ  -->
+
+ <div class="recfor_you section_padding_b">
+    <div class="container">
+        <h2 class="section_title_3">En Son Eklenen Ürünlerimiz</h2>
+        <div class="row gy-4">
+            @foreach (var item in ViewBag.ProductList)
+            {
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <!-- single top arrival  -->
+                    <div class="single_toparrival">
+                        <div class="topariv_img">
+                            <img loading="lazy" src="~/images/@item.ProductImageName" alt="product" style="width:276px !important; height:204px !important;">
+                            <div class="persof bg-warning">Kampanya</div>
+                            <div class="adto_wish">
+                                <i class="icon-heart"></i>
+                            </div>
+                            <div class="prod_soh">
+                                <div class="adto_wish">
+                                    <i class="icon-heart"></i>
+                                </div>
+                                <div class="qk_view open_quickview">
+                                    <span><i class="las la-eye"></i></span>
+                                    Hızlı Bakış
+                                </div>
+                            </div>
+                        </div>
+                        <div class="topariv_cont">
+                            <a href="product-view.html">
+                                <h4>@item.ProductName</h4>
+                            </a>
+                            <p>@item.Category.CategoryName</p>
+                            <div class="price mb-1">
+                                <span class="org_price">@item.ProductPrice</span>
+                            </div>
+                        </div>
+                        <div class="full_atc_btn">
+                            <button>
+                                <span class="me-1"><i class="icon-cart"></i></span>
+                                Sepete Ekle
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div> 
+
+
+<!--  SON EKLENEN ÜRÜNLER BİTİŞ  -->

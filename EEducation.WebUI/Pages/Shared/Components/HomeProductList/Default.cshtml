@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EEducation.Model.Entities.Product>
+
+    <div class="top_arrival_wrp section_padding_b">
+        <div class="container">
+            <h2 class="section_title_3">Öne Çıkan Ürünlerimiz</h2>
+            <div class="product_slider_2">
+
+                @foreach (var item in Model)
+            {
+                <div class="single_toparrival">
+                    <div class="topariv_img">
+                        <img loading="lazy" src="/images/@item.ProductImageName" alt="product" style="width:276px !important; height:204px !important;">
+                        <div class="adto_wish">
+                            <i class="icon-heart"></i>
+                        </div>
+                        <div class="prod_soh">
+                            <div class="adto_wish">
+                                <i class="icon-heart"></i>
+                            </div>
+                            <div class="qk_view open_quickview">
+                                <span><i class="las la-eye"></i></span>
+                                Hızlı Bakış
+                            </div>
+                        </div>
+                    </div>
+                    <div class="topariv_cont">
+                        <a href="product-view.html">
+                            <h4>@item.ProductName</h4>
+                        </a>
+                        <p>
+                            @item.Category.CategoryName
+                        </p>
+                        <div class="price mb-1">
+                            <span class="org_price">@item.ProductPrice ₺</span>
+                        </div>
+                    </div>
+                    <div class="full_atc_btn">
+                        <button>
+                            <span class="me-1"><i class="icon-cart"></i></span>
+                           Sepete Ekle
+                        </button>
+                    </div>
+                </div>
+            }
+
+
+
+            </div>
+        </div>
+    </div>
+
+

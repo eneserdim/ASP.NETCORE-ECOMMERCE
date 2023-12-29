@@ -1,0 +1,45 @@
+﻿@model EEducation.Model.Entities.Category
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kategori Güncelle</h1>
+
+@if (ViewBag.CategoryUpdateError != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.CategoryUpdateError
+    </div>
+}
+
+<br />
+
+<form asp-area="Admin" asp-controller="Category" asp-action="Update" method="post" enctype="multipart/form-data">
+
+    <input type="hidden" class="form-control" name="ID" value="@Model.ID">
+    <div class="form-group mb-3">
+        <input type="text" class="form-control" name="CategoryName" value="@Model.CategoryName" placeholder="Kategori Adını Giriniz">
+    </div>
+
+    <div class="custom-file-container" data-upload-id="myFirstImage">
+        <label>Upload (Single File) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+        <label class="custom-file-container__custom-file">
+            <input type="file" name="file" class="custom-file-container__custom-file__custom-file-input" accept="image/*">
+            <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+            <span class="custom-file-container__custom-file__custom-file-control"></span>
+        </label>
+        <div class="custom-file-container__image-preview"></div>
+    </div>
+
+    <div class="form-group mb-3">
+        <span>Kategori İkonu Ekleyiniz</span>
+        <input type="file" name="file2" />
+    </div>
+
+
+    <button type="submit" class="btn btn-primary mt-3">Kaydet</button>
+</form>
+
+

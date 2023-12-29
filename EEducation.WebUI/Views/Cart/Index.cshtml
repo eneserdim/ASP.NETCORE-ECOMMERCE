@@ -1,0 +1,108 @@
+﻿@model EEducation.WebUI.Models.ShoppingCart
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<!-- breadcrumbs -->
+<div class="container">
+    <div class="breadcrumbs">
+        <a asp-controller="Home" asp-action="Index"><i class="las la-home"></i></a>
+        <a href="#" class="active">Sepetim</a>
+    </div>
+</div>
+
+<!-- shopping cart -->
+<div class="cart_area section_padding_b">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <!-- product head  -->
+                <h4 class="shop_cart_title sopcart_ttl d-none d-lg-flex">
+                    <span>Ürün</span>
+                    <span>Adet</span>
+                    <span>Toplam Tutar</span>
+                </h4>
+
+                <!-- shop cart wrapper  -->
+                <div class="shop_cart_wrap">
+
+                    @foreach (var item in Model.CartItems)
+                    {
+                        <div class="single_shop_cart d-flex align-items-center flex-wrap">
+                            <!-- product image  -->
+                            <div class="cart_img mb-4 mb-md-0">
+                                <img loading="lazy" src="~/themes/e-ticaret/assets/images/150x105.png" alt="product">
+                            </div>
+                            <!-- product title  -->
+                            <div class="cart_cont">
+                                <a href="product-view.html">
+                                    <h5>@item.ProductName</h5>
+                                </a>
+                                <p class="price">@item.Price ₺</p>
+                                <p class="size mb-0">Size: M</p>
+                            </div>
+                            <!-- product quantity  -->
+                            <div class="cart_qnty d-flex align-items-center ms-md-auto">
+                                <div class="cart_qnty_btn">
+                                    <i class="las la-minus"></i>
+                                </div>
+                                <div class="cart_count">4</div>
+                                <div class="cart_qnty_btn">
+                                    <i class="las la-plus"></i>
+                                </div>
+                            </div>
+
+                            <!-- product price  -->
+                            <div class="cart_price ms-auto">
+                                <p>@item.Total</p>
+                            </div>
+                            <!-- action  -->
+                            <div class="cart_remove ms-auto">
+
+                                <a asp-controller="Cart" asp-action="RemoveToCart" asp-route-id="@item.ID"><i class="icon-trash">    </i></a>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+
+
+            <!-- order summary wrapper  -->
+            <div class="col-lg-3 mt-4 mt-lg-0">
+                <div class="cart_summary">
+                    <h4>Sepet Özeti</h4>
+
+                    <div class="cartsum_text d-flex justify-content-between">
+                        <p class="text-semibold">Ürün Toplamı</p>
+                        <p class="text-semibold">@Model.TotalAmount</p>
+                    </div>
+
+                    <div class="cartsum_text d-flex justify-content-between">
+                        <p>Kargo Ücreti</p>
+                        <p>0 ₺</p>
+                    </div>
+
+
+                        <div class="cart_sum_total d-flex justify-content-between">
+                            <p>Toplam Tutar</p>
+
+                            <p>@Model.TotalAmount ₺</p>
+
+
+                        </div>
+                    <div class="cart_sum_coupon">
+                        <input type="text" placeholder="Kupon Kodu">
+                        <button>Kaydet</button>
+                    </div>
+                    <!-- button  -->
+                    <div class="cart_sum_pros">
+                        <button>Ödeme Yap</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

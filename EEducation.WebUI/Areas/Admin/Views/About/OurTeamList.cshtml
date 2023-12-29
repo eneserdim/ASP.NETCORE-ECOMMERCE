@@ -1,0 +1,31 @@
+﻿@model IEnumerable<EEducation.Model.Entities.OurTeam>
+@{
+    ViewData["Title"] = "OurTeamList";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="seperator-header">
+    <a asp-area="Admin" asp-controller="About" asp-action="AddOurTeam" class="btn btn-success">Yeni Ekle</a>
+</div>
+
+<h2 style="text-align:center">Ekibimiz</h2>
+
+<div class="container">
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="card component-card_2" style="max-width:300px;max-height:430px; margin-left:20px; margin-top:10px;">
+                <img src="~/images/@item.PersonalImage" class="card-img-top" alt="widget-card-2" style="max-width:300px;max-height:300px;">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align:center !important;">@item.FullName</h5>
+                    <p class="card-text" style="text-align:center !important;"><strong>@item.PersonalTitle</strong> </p>
+                    <a asp-area="Admin" asp-controller="About" asp-action="UpdateOurTeam" asp-route-id="@item.ID" class="btn btn-warning mb-2 mr-2">Güncelle</a>
+                    <a asp-area="Admin" asp-controller="About" asp-action="DeleteOurTeam" asp-route-id="@item.ID" class="btn btn-danger mb-2 mr-2">Sil</a>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

@@ -1,0 +1,138 @@
+﻿@model IEnumerable<EEducation.Model.Entities.Contact>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<!-- contact us banner -->
+<div class="contact_banner">
+    <div class="cont_banner">
+        <h1 class="title_2">İletişim</h1>
+        <div class="breadcrumbs">
+            <a asp-controller="Home" asp-action="index"><i class="las la-home"></i></a>
+            <a href="#" class="active">İletişim</a>
+        </div>
+    </div>
+</div>
+
+<!-- contact form -->
+<div class="contact_form section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-7 col-12">
+                <div class="billing_form padding_default shadow_sm">
+                    <!-- section title  -->
+                    <h4 class="title_2">Bize Mesaj Bırakın</h4>
+                    <p class="mb-4 text_md">Ekibimiz en geç 24 saat içerisinde sizlere geri dönüş yapacaktır.</p>
+
+                    <div class="row">
+                        <!-- single input box  -->
+                        <div class="col-lg-6">
+                            <div class="single_billing_inp">
+                                <label for="first_name">First Name <span>*</span></label>
+                                <input type="text" id="first_name">
+                            </div>
+                        </div>
+                        <!-- single input box  -->
+                        <div class="col-lg-6">
+                            <div class="single_billing_inp">
+                                <label for="last_name">Last Name <span>*</span></label>
+                                <input type="text" id="last_name">
+                            </div>
+                        </div>
+                        <!-- single input box  -->
+                        <div class="col-12">
+                            <div class="single_billing_inp">
+                                <label for="email_addr">Email Address <span>*</span></label>
+                                <input type="text" id="email_addr">
+                            </div>
+                        </div>
+                        <!-- single input box  -->
+                        <div class="col-12">
+                            <div class="single_billing_inp">
+                                <label for="company_name">Subject</label>
+                                <input type="text" id="company_name">
+                            </div>
+                        </div>
+                        <!-- single input box  -->
+                        <div class="col-12">
+                            <div class="single_billing_inp">
+                                <label for="county_region">Your message <span>*</span></label>
+                                <textarea type="text" id="county_region"></textarea>
+                            </div>
+                        </div>
+                        <!-- single input box  -->
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="default_btn xs_btn rounded px-4">send message</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact information and Hours of operation  -->
+            <div class="col-lg-5 col-xl-4 col-12 mt-4 mt-lg-0">
+                <div class="padding_default border-0 shadow_sm">
+                    <h4 class="title_4">MAĞAZAMIZ</h4>
+                    @foreach (var item in Model)
+                    {
+                        <div class="footer_contact">
+                            <p>
+                                <span class="icn"><i class="las la-map-marker-alt"></i></span>@item.Adress</p>
+                            <p class="phn">
+                                <a href="tel: @item.PhoneNumber"> <span class="icn"><i class="las la-phone"></i></span>@item.PhoneNumber</a>
+                            </p>
+                            <p class="eml">
+                                <a href="mailto: @item.Mail"> <span class="icn"><i class="lar la-envelope"></i></span>@item.Mail</a>
+                            </p>
+                        </div>
+                    }
+
+
+                    <!-- Hours of operation -->
+                    <h4 class="title_4 mt-4">Çalışma Saatlerimiz</h4>
+                    <div class="cartsum_text d-flex justify-content-between">
+                        <p class="">Saturday</p>
+                        <p class="">12:00 PM</p>
+                    </div>
+
+                    <div class="cartsum_text d-flex justify-content-between">
+                        <p class="">Sunday</p>
+                        <p class="">12:00 PM</p>
+                    </div>
+
+                    <div class="cartsum_text d-flex justify-content-between">
+                        <p class="">Monday</p>
+                        <p class="">12:00 PM</p>
+                    </div>
+
+                    <div class="cartsum_text d-flex justify-content-between">
+                        <p class="">Tuesday</p>
+                        <p class="">12:00 PM</p>
+                    </div>
+                    <div class="cartsum_text d-flex justify-content-between">
+                        <p class="">Wednesday</p>
+                        <p class="">12:00 PM</p>
+                    </div>
+                    <div class="cartsum_text d-flex justify-content-between">
+                        <p class="">Thursday</p>
+                        <p class="">12:00 PM</p>
+                    </div>
+                    <div class="cartsum_text d-flex justify-content-between mb-0">
+                        <p class=" mb-0">Friday</p>
+                        <p class=" mb-0">12:00 PM</p>
+                    </div>
+
+                    <!-- Careers -->
+                    <h4 class="title_4 mt-4">Careers</h4>
+                    <p class="text_md mb-0">
+                        If you are interesting in emplyment opportunities at RAFCARTs. Please
+                        email us : <a href="#" class="text-color">contact@demo.com</a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

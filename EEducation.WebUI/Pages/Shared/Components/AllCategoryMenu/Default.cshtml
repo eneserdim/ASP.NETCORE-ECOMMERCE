@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EEducation.Model.Entities.Category>
+
+
+
+<nav class="d-none d-lg-block">
+    <div class="container">
+        <div class="d-flex">
+            <div class="all_category">
+                <div class="bars text-white d-flex align-items-center justify-content-center">
+                    <span class="icon"> <i class="las la-bars"></i></span>
+                    <span class="icon_text">Bütün Kategoriler</span>
+                </div>
+                <!-- sub categories wrapper  -->
+                <div class="sub_categories_wrp">
+                    <div class="sub_categories">
+                        <h5 class="d-block position-relative d-lg-none subcats_title">
+                            Kategorilerimiz
+
+                        </h5>
+                        @foreach (var item in Model)
+                        {
+                            <a href="/Category/Products/@item.ID" class="singlecats">
+                                <span class="img_wrp">
+                                    <img src="/images/@item.CategoryIcon" />
+                                </span>
+                                <span class="txt">@item.CategoryName</span>
+                            </a>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+            <ul class="nav_bar flex-grow-1">
+                <!-- with sub menu  -->
+                <li><a asp-controller="Home" asp-action="Index">Anasayfa</a></li>
+                <!-- with sub menu  -->
+                <li><a asp-controller="About" asp-action="Index">Hakkımızda</a></li>
+                <!-- with sub menu  -->
+                <li><a asp-controller="Product" asp-action="Index">Ürünlerimiz</a></li>
+                <li><a asp-controller="Contact" asp-action="Index">İletişim</a></li>
+                <!-- top head items  -->
+                <li class="tophead_items ms-auto">
+                    <a href="tel:02124001072" class="me-0 pe-0">
+                        <span><i class="las la-phone"></i></span>
+                       +90 (212) 400 1072
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

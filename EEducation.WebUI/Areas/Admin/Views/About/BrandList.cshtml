@@ -1,0 +1,29 @@
+﻿@model IEnumerable<EEducation.Model.Entities.Brand>
+@{
+    ViewData["Title"] = "BrandList";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="seperator-header">
+    <a asp-area="Admin" asp-controller="About" asp-action="AddBrand" class="btn btn-success">Yeni Marka Ekle</a>
+</div>
+
+
+<div class="container">
+    <h2 style="text-align:center">Markalarımız</h2>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="card component-card_2" style="max-width:300px;max-height:300px; margin-left:20px; margin-top:20px;">
+                <img src="~/images/@item.BrandLogo" class="card-img-top" alt="widget-card-2" style="max-width:200px;max-height:200px; margin-left:20px; margin-top:20px;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.BrandName</h5>
+                    <a asp-area="Admin" asp-controller="About" asp-action="UpdateBrand" asp-route-id="@item.ID" class="btn btn-warning mb-2 mr-2">Güncelle</a>
+                    <a asp-area="Admin" asp-controller="About" asp-action="DeleteBrand" asp-route-id="@item.ID" class="btn btn-danger mb-2 mr-2">Sil</a>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

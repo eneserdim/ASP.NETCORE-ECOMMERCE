@@ -1,0 +1,59 @@
+﻿@model IEnumerable<EEducation.Model.Entities.About>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row layout-spacing">
+    <div class="col-lg-12">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-content widget-content-area">
+                <table id="style-3" class="table style-3  table-hover">
+                    <thead>
+                        <tr>
+                            <th class="checkbox-column text-center"> Sıralama </th>
+                            <th>İçerik</th>
+                            <th class="text-center dt-no-sorting">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="checkbox-column text-center"> 1 </td>
+                                <td>Hakkımızda</td>
+                                <td class="text-center">
+                                    <ul class="table-controls">
+                                        <li> <a asp-area="Admin" asp-controller="About" asp-action="UpdateAbout" asp-route-id="@item.ID" class="btn btn-warning mb-2 mr-2">Güncelle</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        }
+
+                        <tr>
+                            <td class="checkbox-column text-center"> 2 </td>
+                            <td>Ekibimiz</td>
+                            <td class="text-center">
+                                <ul class="table-controls">
+                                    <li> <a asp-area="Admin" asp-controller="About" asp-action="OurTeamList" class="btn btn-primary mb-2 mr-2">Görüntüle</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="checkbox-column text-center"> 3 </td>
+                            <td>Markalarımız &Aacute; İş Ortaklarımız</td>
+                            <td class="text-center">
+                                <ul class="table-controls">
+                                    <li> <a asp-area="Admin" asp-controller="About" asp-action="BrandList" class="btn btn-primary mb-2 mr-2">Görüntüle</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
